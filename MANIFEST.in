@@ -1,0 +1,4 @@
+include LICENSE
+include README.rst
+recursive-include eultheme/static *
+recursive-include eultheme/templates *
