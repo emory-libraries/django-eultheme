@@ -31,8 +31,7 @@ by default; use page_rdf_type to override with a webpage subclass.
     }
     </style>
   </head>
-  <body> {# FIXME: request not available in template view? #}
-  {# <body typeof="{{ page_rdf_type|default:'schema:Webpage' }}" about="{{ page_rdf_url|default:request.build_absolute_uri }}"> #}
+  <body class="{% block body_class %}{% endblock %}">
 
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
