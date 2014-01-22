@@ -10,6 +10,7 @@ by default; use page_rdf_type to override with a webpage subclass.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="{% static 'eultheme/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    {% block css %}{% endblock %} {# add any local css here #}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,7 +23,9 @@ by default; use page_rdf_type to override with a webpage subclass.
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'eultheme/js/bootstrap.min.js' %}"></script>
-    <style type="text/css">
+
+    {% block javascript %}{% endblock %} {# add any additional javascript here #}
+    <style type="text/css"> {# TODO: move to local static css ? #}
     body {
       padding-top: 50px;
     }
