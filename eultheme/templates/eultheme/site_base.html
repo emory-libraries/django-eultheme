@@ -47,6 +47,7 @@ by default; use page_rdf_type to override with a webpage subclass.
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="{% url 'site-index' %}">Home</a></li>
+            {% block navlinks %}{% endblock %}
             {# <li><a href="#about">About</a></li> #}
             {# <li><a href="#contact">Contact</a></li> #}
           </ul>
