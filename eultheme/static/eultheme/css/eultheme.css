@@ -108,3 +108,78 @@ article.result p {
     text-shadow: none;
     padding: 40px 20px;
 }
+
+
+/* paginator */
+footer.pagination {
+    text-align: center;
+}
+.pagination .h4 {
+    margin: 12px 0 5px;
+    color: #BABEC0;
+}
+.paginator {
+    overflow-x: scroll;
+    font-size:1em;
+    width:100%;
+    padding: 10px 40px 0;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+}
+.paginator table {
+    border-collapse:collapse;
+    table-layout:fixed;
+    width:100%;
+}
+.paginator table tr {
+    float: left;
+}
+.paginator table td {
+    white-space:nowrap;
+    text-align: center;
+    padding: 0;
+}
+.paginator span {
+    display:block;
+    padding:0;
+    color:#fff;
+}
+.paginator span strong,
+.paginator span a {
+    display:block;
+    font-size:0.85em;
+    padding: 6px 15px;
+}
+.paginator a {
+    color: #888888;
+    text-decoration:none;
+}
+
+.paginator .active a{
+    color:#FFF;
+    background-color: #888888;
+}
+
+.paginator a:hover{
+    color:#FFF;
+    background-color: #C7C7C7;
+}
+.paginator span em {
+    font-style:normal;
+    padding:3px 5px 4px;
+}
+.paginator a:hover em {
+    background-color:#888888;
+}
+.paginator span strong {
+    font-weight:normal;
+}
+.paginator span strong em {
+    background-color:#556E8C;
+}
+.paginator .scroll_bar {
+    width:100%; height:20px;
+    position:relative;
+    margin-top:4px;
+}
