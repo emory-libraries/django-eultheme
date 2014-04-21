@@ -183,3 +183,79 @@ footer.pagination {
     position:relative;
     margin-top:4px;
 }
+
+/* advanced search filter */
+.no-js .adv.group{
+    display:block!important;
+}
+
+.adv.group {
+    max-width: 800px;
+    /*color: #BDC3C7;*/
+    padding: 15px;
+}
+
+.adv.group .form-group {
+    position: relative;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.adv.group .btn.btn-adv {
+    margin-top: 25px;
+    width: 100%;
+}
+
+.adv.toggle.switch {
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-size: 0.9em;
+}
+
+.adv.toggle.switch a{
+    color: rgb(150, 150, 150);
+}
+
+.adv.toggle.switch a:hover,
+.adv.toggle.switch a:focus,
+.toggle.switch.active a {
+    /*color: #f6f6f6;*/
+}
+
+.adv.group header h4 {
+    text-align: center;
+    /*color: #BDC3C7;*/
+    border-bottom: 1px solid rgb(112, 112, 112);
+    margin-bottom: 18px;
+    padding-bottom: 7px;
+}
+
+.adv.group .form-control {
+    margin-bottom: 15px;
+    font-size: 12px;
+    height: 32px;
+}
+.adv.group label{
+    font-size: .8em;
+    color: rgb(213, 213, 213);
+    margin-bottom: 0;
+    font-size: 15px;
+    text-align: right;
+}
+
+.reset-form {
+    margin-right: 30px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+}
+.reset-form a {
+    color: rgb(131, 133, 141);
+    text-shadow: 1px 1px 3px rgb(209, 209, 209);
+}
+.reset-form a:hover {
+    color: #F7F7F7;
+}
+
