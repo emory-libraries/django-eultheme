@@ -38,4 +38,13 @@ $(document).ready(function(){
         $inputs.attr('value','').val('');
     }
 
+
+    /* NOTE: also requires inclusion of  eultheme/js/bootstrap-datepicker.js */
+    $("#date-range input").datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years"
+    });
+
+
 });
