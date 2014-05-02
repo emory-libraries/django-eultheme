@@ -6,12 +6,12 @@
     <a href="#">search options <span class="glyphicon glyphicon-chevron-down"></span></a>
 </span>
 <div class="filter">
-
 {# start Advanced Filter #}
 <fieldset class="adv toggle group" data-type="advfields" style="display:none;">
     <header class="col-sm-12">
         <h4>Advanced Search Options</h4>
     </header>
+
     {# for each advanced field #}
     {% for field in form.advanced_fields %}
     <div class="form-group">
@@ -22,22 +22,19 @@
 
     {% if form.start_date and form.end_date %} {# date range search #}
         <div class="form-group" id="date-range">
-            <label for="{{ field.name }}" class="col-sm-5 control-label">Return {{ resource_name|default:'items' }} between these years:</label>
+            <label for="{{ form.start_date.name }}" class="col-sm-5 control-label">Return {{ resource_name|default:'items' }} between these years:</label>
             <div class="col-sm-7">
                 <div class="row">
-                    {# {{ form.start_date }} to {{ form.end_date }} #}
                     <div class="col-xs-5">
                         {{ form.start_date }}
-                        {# <input type="text" class="form-control" id="testInput1" placeholder="Test Advanced Field"> #}
                     </div>
                     <div class="col-xs-1"><p class="small centered">to</p></div>
                     <div class="col-xs-5">
                         {{ form.end_date }}
-                        {# <input type="text" class="form-control" id="testInput1" placeholder="Test Advanced Field"> #}
                     </div>
-                </div>
-            </div>
-        </div>
+                </div> {# row #}
+            </div> {# col-sm-7 #}
+        </div> {# date range form group #}
     {% endif %}
 
     <div class="form-group">
@@ -49,7 +46,11 @@
                 <div class="controls btn-group-sm col-xs-6">
                     <button id="submit2" class="btn btn-primary btn-adv" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div> {# row #}
+        </div> {# column #}
+    </div> {# form-group #}
 </fieldset>
+{% block search_options %} {# optional block, e.g. for pagination/sorting #}
+{% endblock %}
+
+</div> {# end filter #}
