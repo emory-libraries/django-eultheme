@@ -1,6 +1,7 @@
 {# snippet for toggle-able search filters, including date range #}
 {# expects form with list of "advanced_fields" #}
 {# set resource_name to customize label of item in date filter #}
+{% load widget_tweaks %}
 
 <span class="adv toggle switch" data-type="advfields">
     <a href="#">search options <span class="glyphicon glyphicon-chevron-down"></span></a>
@@ -16,7 +17,7 @@
     {% for field in form.advanced_fields %}
     <div class="form-group">
         <label for="id_{{ field.name }}" class="col-sm-2 control-label">{{ field.label }}</label>
-        <div class="col-sm-10">{{ field }}</div>
+        <div class="col-sm-10">{{ field|add_class:"form-control" }}</div>
     </div>
     {% endfor %}
 
