@@ -1,5 +1,24 @@
 $(document).ready(function(){
 
+    /*  Adds padding to body if the navbar is fixed-top
+        Also, adds padding dynamically if the navbar reflows on resize
+    */
+    var $fixedNavbar = $('body > .navbar.navbar-fixed-top');
+    if($fixedNavbar.length>0){
+        var $body = $('body');
+
+        $(document).on('ready',function(){
+            addPadding($fixedNavbar.height());
+        });
+        $(window).resize(function(){
+            addPadding($fixedNavbar.height());
+        })
+
+        function addPadding(navbar_height){
+            $body.css({'padding-top':navbar_height})
+        }
+    }
+
     /* advanced search filter controls */
     function toggleGroup(elem){
         var $this = $(elem),
@@ -19,18 +38,19 @@ $(document).ready(function(){
     }
 
     $advOptionsGroup =  $(".adv.group");
+    if($advOptionsGroup.length>0){
+        $('.adv.group .controls .btn').bind('click', function(e){
+            e.preventDefault();
 
-    $('.adv.group .controls .btn').bind('click', function(e){
-        e.preventDefault();
-
-        var $this = $(this);
-        if($this.hasClass('submit')){
-            search.get();
-        }
-        else if($this.hasClass('reset')){
-            reset($advOptionsGroup);
-        }
-    });
+            var $this = $(this);
+            if($this.hasClass('submit')){
+                search.get();
+            }
+            else if($this.hasClass('reset')){
+                reset($advOptionsGroup);
+            }
+        });
+    }
 
     function reset(elem){
         var $elem = $(elem),
@@ -40,11 +60,14 @@ $(document).ready(function(){
 
 
     /* NOTE: also requires inclusion of  eultheme/js/bootstrap-datepicker.js */
-    $("#date-range input").datepicker({
-        format: "yyyy",
-        viewMode: "years",
-        minViewMode: "years"
-    });
+    var $dateInput = $("#date-range input");
 
+    if($dateInput.length>0){
+        $dateInput.datepicker({
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years"
+        });
+    }
 
 });
