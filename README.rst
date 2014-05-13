@@ -8,7 +8,7 @@ Use and Installation:
 ---------------------
 
 * pip install via github url
-* Add ``eultheme`` to installed apps
+* Add ``eultheme`` and ``widget_tweaks`` to **INSTALLED_APPS**
 * Extend ``eultheme/site_base.html`` for your base template.
 * Recommended: add ``eultheme.context_processors.template_settings`` to
   your **TEMPLATE_CONTEXT_PROCESSORS**
