@@ -1,5 +1,5 @@
-{# snippet for toggle-able search filters, including date range #}
-{# expects form with list of "advanced_fields" #}
+{# snippet for toggle-able search filters, including optional date range #}
+{# expects form with list of "advanced_fields" and "advanced_fields_values"; see eultheme.forms #}
 {# set resource_name to customize label of item in date filter #}
 {% load widget_tweaks %}
 
@@ -8,7 +8,7 @@
 </span>
 <div class="filter">
 {# start Advanced Filter #}
-<fieldset class="adv toggle group" data-type="advfields" style="display:none;">
+<fieldset class="adv toggle group" data-type="advfields" {% if not form.advanced_fields_values|default:0 %}style="display:none;"{% endif %}>
     <header class="col-sm-12">
         <h4>Advanced Search Options</h4>
     </header>
