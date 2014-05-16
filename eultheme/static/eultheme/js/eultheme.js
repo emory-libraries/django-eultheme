@@ -43,8 +43,8 @@ $(document).ready(function(){
             e.preventDefault();
 
             var $this = $(this);
-            if($this.hasClass('submit')){
-                search.get();
+            if($this.hasClass('submit') || $this.attr('type')=='submit'){
+                search.get(this);
             }
             else if($this.hasClass('reset')){
                 reset($advOptionsGroup);
@@ -56,6 +56,12 @@ $(document).ready(function(){
         var $elem = $(elem),
         $inputs = $elem.find('input');
         $inputs.attr('value','').val('');
+    }
+
+    var search = {
+        get: function(elem){
+            $('form').submit();
+        }
     }
 
 
