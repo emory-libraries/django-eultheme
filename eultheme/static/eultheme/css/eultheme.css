@@ -783,3 +783,77 @@ header.grey{
 .datepicker.dropdown-menu td {
   padding: 4px 5px;
 }
+
+
+/** collection list - for use with collection_list_item snippet **/
+
+.collection-list .media-heading {
+    font-size: 1.5em;
+}
+.media-list .media>a {
+    border: 1px solid #EEE;
+    text-decoration: none;
+    color: inherit;
+    float: none;
+    transition: color 0.2s;
+    width: 100%;
+    display: table-cell;
+}
+
+.collection-list .media {
+    display: block;
+    max-width: 400px;
+    margin-top: 9px;
+    display: table;
+    width: 100%;
+}
+
+.media-list .media>a:hover,
+.media-list .media>a:focus{
+    color: #44C2FF;
+    border-color: #DFE9EE;
+}
+
+.collection-list .media-info{
+  opacity: 0.8;
+}
+
+
+.collection-list .media-body, .collection-list .media-body-link-to {
+    display: table-cell;
+}
+
+.collection-list .media-body{
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    width: 100%;
+    font-size: 0.75em;
+}
+
+.collection-list .media-body-link-to {
+    display: table-cell;
+    vertical-align: middle;
+    background: #EEE;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #999;
+    transition: background-color 0.2s, color 0.1s;
+    font-size: 1.25em;
+}
+
+.collection-list .lead {
+    font-size: 1.5em;
+    margin-bottom: 0;
+}
+.collection-list a:hover .media-body-link-to,
+.collection-list a:focus .media-body-link-to{
+    color: #44C2FF;
+    background-color: #F2FBFD;
+}
+
+.collection-list a:hover .glyphicon-folder-close:before,
+.collection-list a:focus .glyphicon-folder-close:before{
+  content: "\e118";
+}
