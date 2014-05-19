@@ -41,11 +41,11 @@ $(document).ready(function(){
     if($advOptionsGroup.length>0){
         $('.adv.group .controls .btn').bind('click', function(e){
             e.preventDefault();
-
             var $this = $(this);
             if($this.hasClass('submit') || $this.attr('type')=='submit'){
                 search.get(this);
             }
+
             else if($this.hasClass('reset')){
                 reset($advOptionsGroup);
             }
@@ -60,7 +60,7 @@ $(document).ready(function(){
 
     var search = {
         get: function(elem){
-            $('form').submit();
+            $($('form .btn[type=submit]')[0]).click()
         }
     }
 
