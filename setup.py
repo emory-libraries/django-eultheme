@@ -1,0 +1,40 @@
+import os
+from setuptools import setup
+
+import eultheme
+
+# setup based on django docs:
+# https://docs.djangoproject.com/en/dev/intro/reusable-apps/
+
+README = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
+
+# allow setup.py to be run from any path
+os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
+
+setup(
+    name='django-eultheme',
+    version=eultheme.__version__,
+    packages=['eultheme'],
+    include_package_data=True,
+    license='Apache License, Version 2.0',
+    description='A reusable Emory University Libraries theme for Django.',
+    long_description=README,
+    url='https://github.com/emory-libraries/django-eultheme',
+    author='Emory University Libraries',
+    author_email='libsysdev-l@listserv.cc.emory.edu',
+    classifiers=[
+        'Environment :: Web Environment',
+        'Framework :: Django',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: Apache Software License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+        'Topic :: Internet :: WWW/HTTP',
+        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+    ],
+    install_requires=[
+        'django-widget-tweaks',
+    ],
+)

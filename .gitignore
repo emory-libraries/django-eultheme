@@ -1,0 +1,3 @@
+*.pyc
+
+django_eultheme.egg-info/*
