@@ -7,6 +7,7 @@ def template_settings(request):
 
     context_extras = {
         'ENABLE_BETA_WARNING': getattr(settings, 'ENABLE_BETA_WARNING', False),
+        'EULTHEME_NO_EXTERNAL_JS': getattr(settings, 'EULTHEME_NO_EXTERNAL_JS', False),
     }
 
     return context_extras
