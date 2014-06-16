@@ -926,13 +926,31 @@ h1.site-title:before {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002787', endColorstr='#258dc8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
-.logo-container+div.container .nav>li>a{
+.logo-container+div.container .nav>li>a,
+.logo-container+div.container .nav>li>.nav-text{
   padding-top: 16px;
   padding-left: 15px;
   color:#FFF;
   opacity: 0.8;
   transition:opacity 0.2s;
   margin-top:0;
+}
+
+.logo-container+div.container .nav>li>.nav-text {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    opacity: 1;
+}
+
+@media (min-width: 768px){
+    .logo-container+div.container .nav>li>.nav-text {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
 }
 
 .navbar-inverse .navbar-collapse{
