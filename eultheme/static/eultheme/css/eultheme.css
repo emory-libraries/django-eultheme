@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+.container>.navbar-header{
+  float: none;
+}
+
 .messages p {
     padding: 15px;
 }
@@ -857,3 +861,243 @@ header.grey{
 .collection-list a:focus .glyphicon-folder-close:before{
   content: "\e118";
 }
+
+.emory-banner {
+  background-color:white; 
+  border-top: 1px solid #E2E2E2;
+  border-bottom: 1px solid #ADADAD;
+  height: 40px;
+}
+
+.emory-banner .logo{
+}
+
+.emory-banner .logo img{
+    height:40px;
+    padding:5px 0;
+    margin: 0;
+    float: left;
+}
+h1.site-title {
+    float: left;
+    font-size: 1.5em;
+    margin: 5px 15px;
+    font-weight: 300;
+}
+h1.site-title a{
+    color: #3C71AC;
+}
+
+h1.site-title:before {
+    content: '';
+    position: relative;
+    height: 38px;
+    float: left;
+    width: 29px;
+    background: #FFF;
+    margin-top: -5px;
+    left: -10px;
+    background-image: url('/static/eultheme/img/arrow-right.png');
+    background-repeat: no-repeat;
+    background-position: 0 -9px;
+}
+
+
+.logo-container {
+  float: left;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-container+div.container {
+  width: 100%;
+  position: relative;
+  display: block;
+  z-index: 1;
+  
+  background: rgb(0,39,135); /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  rgba(0,39,135,1) 14%, rgba(37,141,200,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(14%,rgba(0,39,135,1)), color-stop(100%,rgba(37,141,200,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(-45deg,  rgba(0,39,135,1) 14%,rgba(37,141,200,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-45deg,  rgba(0,39,135,1) 14%,rgba(37,141,200,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(-45deg,  rgba(0,39,135,1) 14%,rgba(37,141,200,1) 100%); /* IE10+ */
+  background: linear-gradient(135deg,  rgba(0,39,135,1) 14%,rgba(37,141,200,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002787', endColorstr='#258dc8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.logo-container+div.container .nav>li>a{
+  padding-top: 16px;
+  padding-left: 15px;
+  color:#FFF;
+  opacity: 0.8;
+  transition:opacity 0.2s;
+  margin-top:0;
+}
+
+.navbar-inverse .navbar-collapse{
+  background-color:#333;
+  background-color: rgba(27, 27, 27, 0.8);
+}
+
+.logo-container+div.container .nav>li>a:hover,
+.logo-container+div.container .nav>li>a:focus{
+  color:#FFF;
+  opacity: 1;
+}
+
+
+.banner-container{
+    display: table-cell;
+    vertical-align: top;
+}
+@media(min-width:767px){
+  .navbar-inverse .navbar-collapse{
+    background-color:transparent;
+  }
+  .logo-container+div.container .nav>li>a{
+    background-color:transparent; 
+  }
+  
+  .logo-container{
+      vertical-align: middle;
+      width:2%;
+      float: none;
+      display: table-cell;
+      background: #002787;
+  }
+  .logo-container+div.container {
+    display:table-cell;
+  
+    padding-left: 0;
+}
+}
+
+.navbar.navbar-fixed-top.navbar-inverse {
+    border-color: #002878;
+    border-color: rgba(255, 255, 255, 0.71);
+}
+
+.logo-container+div.container .nav>li>a.site-title {
+  font-size: 1.4em;
+  border-left: 1px solid #3D548F;
+  padding-top: 0.55em;
+  padding-bottom: 0.55em;
+  line-height: 1.4;
+}
+
+@media (min0width:768px){
+  .logo-container+div.container .nav>li>a.site-title {
+    margin-left: -15px;
+  }
+}
+
+.logo-container+.banner-container{
+    background: rgb(30, 30, 32);
+    padding-top: 15px;
+}
+
+.logo-container .logo{
+  background-color: #002787;
+  float: left;
+}
+
+.logo-container .logo img{
+  width: 120px;
+  padding: 12px;
+  
+}
+
+.banner-container .emory-banner {
+  background-color:transparent;
+  border:none;
+  padding-top: 25px;
+}
+
+.banner-container h1.site-title{
+  font-size:2em;
+}
+
+.banner-container h1.site-title a{
+    color: #E0E0E0;
+}
+
+.banner-container h1.site-title:before {
+  display:none;
+}
+
+.banner-container .container>.navbar-header{
+  width:100%;
+  margin-top: -30px;
+  padding-bottom: 18px;
+}
+
+.banner-container .container{
+  width:100%;
+}
+
+@media(min-width:767px){
+  .banner-container .emory-banner {
+    padding-top: 0px;
+  }
+  .banner-container .container>.navbar-header{
+    padding-bottom:0px;
+  }
+}
+
+.lits{
+    float: right;
+    width: 100%;
+    padding-right: 1em;
+    color: #000;
+    opacity: 0.6;
+    max-width:200px;
+    padding-bottom:24px
+}
+.lits img{
+    width: 100%;
+}
+.lits p {
+    font-size: 12px;
+}
+
+.ribbon {
+    position: fixed;
+    background: rgb(204, 204, 204);
+    box-shadow: 1px -2px 3px rgba(0, 0, 0, 0.43);
+    z-index: 9999999;
+    top: 0px;
+    right: 0px;
+    padding:0px 50px;
+    font-size:12px;
+    width:500px;
+    text-align:center;
+    -webkit-transform: rotate(35deg) translate(27%,-60%);
+    -moz-transform: rotate(35deg) translate(27%,-60%);
+    transform: rotate(35deg) translate(27%,-60%);
+}
+
+.ribbon h2, .ribbon p{
+    max-width:230px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.ribbon h2{
+    font-size:24px;
+}
+
+.ribbon p{
+    max-width:300px;
+}
+
+.ribbon.beta-warning{
+    background-color: rgb(255, 69, 69);
+    opacity: 0.95;
+}
+
+.ribbon.beta-warning h2,
+.ribbon.beta-warning p{
+    color: #FFF0F0;
+}
+
