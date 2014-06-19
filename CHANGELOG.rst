@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+Release 0.3
+-----------
+
+- Updated Emory branding
+- Optional beta warning banner, configurable via **ENABLE_BETA_WARNING**
+  in Django settings
+
 Release 0.2
 -----------
 
