@@ -21,13 +21,18 @@ by default; use page_rdf_type to override with a webpage subclass.
     <![endif]-->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+    {% if EULTHEME_NO_EXTERNAL_JS %}  {# use local copy when requested #}
+    <script src="{% static 'eultheme/js/jquery.min.js' %}"></script>
+    {% else %}
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    {% endif %}
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'eultheme/js/bootstrap.min.js' %}"></script>
 
     <script src="{% static 'eultheme/js/eultheme.js' %}"></script>
 
     {% block javascript %}{% endblock %} {# add any additional javascript here #}
+    {% block head_extras %}{% endblock %}  {# any header metadata, etc #}
   </head>
   <body class="{% block body_class %}{% endblock %}">
       {% if ENABLE_BETA_WARNING %}
