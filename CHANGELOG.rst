@@ -4,9 +4,9 @@ CHANGELOG
 Release 0.2
 -----------
 
-- Added **head_extras* block to site_base.html to allow for additional
+- Added **head_extras** block to site_base.html to allow for additional
   head items (e.g., metadata, unAPI server links, etc)
-- New Django setting **EULTHEME_NO_EXTERNAL_JS* - configure this to be true
+- New Django setting **EULTHEME_NO_EXTERNAL_JS** - configure this to be true
   when you need Javascript resources to be loaded from local static files
   instead of a public CDN
 
