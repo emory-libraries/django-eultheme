@@ -969,7 +969,7 @@ h1.site-title:before {
     display: table-cell;
     vertical-align: top;
 }
-@media(min-width:767px){
+@media(min-width:768px){
   .navbar-inverse .navbar-collapse{
     background-color:transparent;
   }
@@ -1090,9 +1090,10 @@ h1.site-title:before {
     font-size:12px;
     width:500px;
     text-align:center;
-    -webkit-transform: rotate(35deg) translate(27%,-60%);
-    -moz-transform: rotate(35deg) translate(27%,-60%);
-    transform: rotate(35deg) translate(27%,-60%);
+    cursor: pointer;
+    -webkit-transform: rotate(35deg) translate(25%,-40%);
+    -moz-transform: rotate(35deg) translate(25%,-35%);
+    transform: rotate(35deg) translate(25%,-35%);
 }
 
 .ribbon h2, .ribbon p{
@@ -1112,6 +1113,7 @@ h1.site-title:before {
 .ribbon.beta-warning{
     background-color: rgb(255, 69, 69);
     opacity: 0.95;
+    transition:opacity 0.2s;
 }
 
 .ribbon.beta-warning h2,
@@ -1119,3 +1121,28 @@ h1.site-title:before {
     color: #FFF0F0;
 }
 
+.ribbon .btn.btn-default {
+    padding: 5px 10px;
+    background: transparent;
+    color: #FFF;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+    border-color: #F0DADA;
+}
+.ribbon .btn.btn-default:hover {
+    background-color: #FFDBDB;
+    color: #FA3434;
+    border-color: #FA3434;
+}
+
+.ribbon.fade{
+  opacity:0.3;
+   pointer-events: none; 
+  -webkit-transform: rotate(35deg) translate(27%,-60%);
+  -moz-transform: rotate(35deg) translate(27%,-60%);
+  transform: rotate(35deg) translate(27%,-60%);
+}
+
+.ribbon.fade .btn.btn-default{
+  display:none;
+}
