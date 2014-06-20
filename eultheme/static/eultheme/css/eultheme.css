@@ -1093,7 +1093,7 @@ h1.site-title:before {
     cursor: pointer;
     -webkit-transform: rotate(35deg) translate(25%,-40%);
     -moz-transform: rotate(35deg) translate(25%,-35%);
-    transform: rotate(35deg) translate(25%,-35%);
+    transform: rotate(35deg) translate(24%,-35%);
 }
 
 .ribbon h2, .ribbon p{
