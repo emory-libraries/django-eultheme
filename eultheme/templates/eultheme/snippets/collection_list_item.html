@@ -2,7 +2,7 @@
 {# expects to be enclosed in a <ul class="media-list collection-list"> #}
 <li class="media">
     <a href="{% block url %}{% endblock %}">
-        <div class="media-body-link-to">
+        <div class="media-body-link-to" {% block media-body-style %}{% endblock %}>
             <span class="glyphicon glyphicon-folder-close"></span>
         </div>
         <div class="media-body">

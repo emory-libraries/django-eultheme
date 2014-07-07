@@ -8,6 +8,9 @@ by default; use page_rdf_type to override with a webpage subclass.
   <head>
     <title>{% block page-title %}{% block page-subtitle %}{% endblock %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block favicon %}
+    <link id="siteFavIcon" rel="shortcut icon" type="image/x-icon" href="{% static 'eultheme/img/favicon.ico' %}">
+    {% endblock %}
     <!-- Bootstrap -->
     <link href="{% static 'eultheme/css/bootstrap.min.css' %}" rel="stylesheet"/>
     <link href="{% static 'eultheme/css/eultheme.css' %}" rel="stylesheet"/>
