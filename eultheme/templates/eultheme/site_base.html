@@ -51,6 +51,14 @@ by default; use page_rdf_type to override with a webpage subclass.
             <img src="{% static 'eultheme/img/EmoryHz_EUVt_hero_white.png' %}"/>
           </div>
 
+          {# the following is the title that appears on the top nav for XS screen sizes. it uses the xs-nav-title block #}
+          <div class="visible-xs">
+            <h1 class="site-title"><a href="{% url 'site-index' %}">
+              {% block xs-nav-title %}{% endblock %}
+            </a></h1>
+          </div>
+          {# end xs-title markup #}
+
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -90,7 +98,7 @@ by default; use page_rdf_type to override with a webpage subclass.
     <div class="container footer">
       <hr/>
       <div class="col-xs-12 col-sm-10">
-      <p>{{ SW_VERSION }}  {# TODO: see if we can make sw version context processor sharable/reusable #}</p>
+      <p id="sw_version">{{ SW_VERSION }}  {# TODO: see if we can make sw version context processor sharable/reusable #}</p>
       {% block footer-content %}{% endblock %}
     </div>
     <div class="col-xs-12 col-sm-2">
