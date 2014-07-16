@@ -8,6 +8,9 @@ by default; use page_rdf_type to override with a webpage subclass.
   <head>
     <title>{% block page-title %}{% block page-subtitle %}{% endblock %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block favicon %}
+    <link id="siteFavIcon" rel="shortcut icon" type="image/x-icon" href="{% static 'eultheme/img/favicon.ico' %}">
+    {% endblock %}
     <!-- Bootstrap -->
     <link href="{% static 'eultheme/css/bootstrap.min.css' %}" rel="stylesheet"/>
     <link href="{% static 'eultheme/css/eultheme.css' %}" rel="stylesheet"/>
@@ -28,17 +31,17 @@ by default; use page_rdf_type to override with a webpage subclass.
     {% endif %}
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'eultheme/js/bootstrap.min.js' %}"></script>
-
     <script src="{% static 'eultheme/js/eultheme.js' %}"></script>
 
     {% block javascript %}{% endblock %} {# add any additional javascript here #}
     {% block head_extras %}{% endblock %}  {# any header metadata, etc #}
   </head>
-  <body class="{% block body_class %}{% endblock %}">
+  <body class="{% block body_class %}{% endblock %}"{% block body_attrs %}{% endblock %}>
       {% if ENABLE_BETA_WARNING %}
-        <div class="ribbon beta-warning">
+        <div class="ribbon beta-warning fade">
           <h2>This site is in <code>BETA</code></h2>
           <p>Content may change or be removed without warning.</p>
+          <button class="btn btn-default">OK</button>
         </div>
       {% endif %}
 
@@ -47,6 +50,14 @@ by default; use page_rdf_type to override with a webpage subclass.
           <div class="logo">
             <img src="{% static 'eultheme/img/EmoryHz_EUVt_hero_white.png' %}"/>
           </div>
+
+          {# the following is the title that appears on the top nav for XS screen sizes. it uses the xs-nav-title block #}
+          <div class="visible-xs">
+            <h1 class="site-title"><a href="{% url 'site-index' %}">
+              {% block xs-nav-title %}{% endblock %}
+            </a></h1>
+          </div>
+          {# end xs-title markup #}
 
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -87,7 +98,7 @@ by default; use page_rdf_type to override with a webpage subclass.
     <div class="container footer">
       <hr/>
       <div class="col-xs-12 col-sm-10">
-      <p>{{ SW_VERSION }}  {# TODO: see if we can make sw version context processor sharable/reusable #}</p>
+      <p id="sw_version">{{ SW_VERSION }}  {# TODO: see if we can make sw version context processor sharable/reusable #}</p>
       {% block footer-content %}{% endblock %}
     </div>
     <div class="col-xs-12 col-sm-2">

@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+Release 0.4
+-----------
+
+- Improved Emory branding in header and footer
+- New block for mobile nav title, **xs-nav-title**
+- Improved style for version number in template footer
+- Body attributes block, **body_attrs**, to allow setting RDFa schema.org classes
+
 Release 0.3
 -----------
 

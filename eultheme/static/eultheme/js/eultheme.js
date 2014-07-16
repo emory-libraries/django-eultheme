@@ -76,4 +76,26 @@ $(document).ready(function(){
         });
     }
 
+    function getCookie(name){
+         var pattern = RegExp(name + "=.[^;]*")
+         matched = document.cookie.match(pattern)
+         if(matched){
+             var cookie = matched[0].split('=')
+             return cookie[1]
+         }
+         return false
+     }
+
+    var $ribbon = $('body>.ribbon');
+    if($ribbon){
+        var fadeRibbonCookie = getCookie('mFadeRibbon');
+        if(fadeRibbonCookie==false){
+            $ribbon.removeClass('fade');
+        }
+        $ribbon.on('click',function(){
+            $(this).addClass('fade');
+            document.cookie = "mFadeRibbon=true; expires=60; path=/";
+        });
+    }
+
 });
