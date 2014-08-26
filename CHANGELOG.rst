@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+
+Release 0.5
+-----------
+
+- Added block for metadata
+- New icons from Font Awesome (http://fortawesome.github.io/Font-Awesome/icons/)
+- New pagination option: Dropdown
+
 Release 0.4
 -----------
 
