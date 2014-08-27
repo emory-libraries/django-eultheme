@@ -1,5 +1,6 @@
 from django.conf import settings
-
+from django.contrib.sites.models import get_current_site
+from django.utils.functional import SimpleLazyObject
 
 def template_settings(request):
     '''Template context processor: add selected setting to context
@@ -11,3 +12,12 @@ def template_settings(request):
     }
 
     return context_extras
+
+def site_path(request):
+    site = SimpleLazyObject(lambda: get_current_site(request))
+    protocol = 'https' if request.is_secure() else 'http'
+
+    return {
+        'site': site,
+        'site_root': SimpleLazyObject(lambda: "{0}://{1}".format(protocol, site.domain)),
+    }
