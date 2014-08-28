@@ -14,6 +14,8 @@ def template_settings(request):
     return context_extras
 
 def site_path(request):
+	'''Template context processor: defines current site and 
+	the site root path so it can be used when building absolute urls.'''
     site = SimpleLazyObject(lambda: get_current_site(request))
     protocol = 'https' if request.is_secure() else 'http'
 

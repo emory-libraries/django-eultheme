@@ -8,6 +8,7 @@ Release 0.5
 - Added block for metadata
 - New icons from Font Awesome (http://fortawesome.github.io/Font-Awesome/icons/)
 - New pagination option: Dropdown
+- New context processor, **site_path**, to display site and site root urls
 
 Release 0.4
 -----------
