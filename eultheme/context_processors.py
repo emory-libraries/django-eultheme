@@ -14,12 +14,13 @@ def template_settings(request):
     return context_extras
 
 def site_path(request):
-	'''Template context processor: defines current site and 
-	the site root path so it can be used when building absolute urls.'''
+    '''Template context processor: provides access to current
+    :class:`~django.contrib.sites.models.Site` and
+    the site root path for use in building absolute urls.
+    '''
     site = SimpleLazyObject(lambda: get_current_site(request))
     protocol = 'https' if request.is_secure() else 'http'
-
     return {
         'site': site,
-        'site_root': SimpleLazyObject(lambda: "{0}://{1}".format(protocol, site.domain)),
+        'site_root': SimpleLazyObject(lambda: "%s://%s" % (protocol, site.domain))
     }
