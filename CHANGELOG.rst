@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+
+Release 0.5
+-----------
+
+- Added block for metadata
+- New icons from Font Awesome (http://fortawesome.github.io/Font-Awesome/icons/)
+- New dropdown pagination template
+- New context processor, **site_path**, for access to the current configured
+  site via django.contrib.sites
+
 Release 0.4
 -----------
 
