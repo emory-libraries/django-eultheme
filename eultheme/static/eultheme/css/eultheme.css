@@ -995,15 +995,15 @@ h1.site-title a{
 
 .logo-container+div.container .nav>li>a.site-title {
   font-size: 1.4em;
-  border-left: 1px solid #3D548F;
   padding-top: 0.55em;
   padding-bottom: 0.55em;
   line-height: 1.4;
 }
 
-@media (min0width:768px){
+@media (min-width:768px){
   .logo-container+div.container .nav>li>a.site-title {
     margin-left: -15px;
+    border-left: 1px solid #3D548F;
   }
 }
 
