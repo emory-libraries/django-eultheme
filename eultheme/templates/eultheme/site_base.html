@@ -42,13 +42,17 @@ by default; use page_rdf_type to override with a webpage subclass.
     {% block head_extras %}{% endblock %}  {# any header metadata, etc #}
   </head>
   <body class="{% block body_class %}{% endblock %}"{% block body_attrs %}{% endblock %}>
-      {% if ENABLE_BETA_WARNING %}
-        <div class="ribbon beta-warning fade">
-          <h2>This site is in <code>BETA</code></h2>
-          <p>Content may change or be removed without warning.</p>
-          <button class="btn btn-default">OK</button>
-        </div>
-      {% endif %}
+    {% if ENABLE_BETA_WARNING %}
+      <div class="ribbon beta-warning fade">
+        <h2>This site is in <code>BETA</code></h2>
+        <p>Content may change or be removed without warning.</p>
+        <button class="btn btn-default">OK</button>
+      </div>
+    {% endif %}
+
+    {% if banner %}
+    {% include 'mx/banner.html' %}
+    {% endif %}
 
     <div class="navbar {% block nav_class %}{% endblock %}" role="navigation">
       <div class="navbar-header logo-container">

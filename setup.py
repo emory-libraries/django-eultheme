@@ -36,5 +36,6 @@ setup(
     ],
     install_requires=[
         'django-widget-tweaks',
+        'django-downtime',
     ],
 )

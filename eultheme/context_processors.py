@@ -1,6 +1,10 @@
+import datetime
 from django.conf import settings
 from django.contrib.sites.models import get_current_site
 from django.utils.functional import SimpleLazyObject
+from django.utils.timezone import utc
+from downtime.models import Period
+from .models import Banner
 
 def template_settings(request):
     '''Template context processor: add selected setting to context
@@ -24,3 +28,13 @@ def site_path(request):
         'site': site,
         'site_root': SimpleLazyObject(lambda: "%s://%s" % (protocol, site.domain))
     }
+
+def downtime_context(request):
+    '''Template context processor: add relevant maintenance banner to site.'''
+    banner = Banner.objects.get_deployed()
+    if banner:
+        banner = banner[0]
+        return {'banner': banner}
+
+    site_is_down = Period.objects.is_down()
+    return {'site_is_down': site_is_down}
