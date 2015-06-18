@@ -34,20 +34,16 @@ class BannerTest(TestCase):
         self.p1.start_time = datetime.datetime.now() + datetime.timedelta(days=1)
         self.p1.save()
 
-        # Update Query
-        self.active_banner = Banner.objects.get_deployed().first()
-
         # Banner should not be active, so active_banner will be empty
+        self.active_banner = Banner.objects.get_deployed().first()
         self.assertFalse(self.active_banner, "Banner should not be active")
 
         # Change Banner day range to 1 day out
         self.b1.days = 1
         self.b1.save()
 
-        # Update Query
-        self.active_banner = Banner.objects.get_deployed().first()
-
         # Banner should be active
+        self.active_banner = Banner.objects.get_deployed().first()
         self.assertTrue(self.active_banner, "Banner should be active")
 
         # Change Period start_time and end_time to some time in the past
@@ -55,18 +51,15 @@ class BannerTest(TestCase):
         self.p1.end_time = datetime.datetime.now() - datetime.timedelta(days=8)
         self.p1.save();
 
-        # Banner should not be active, so active_banner will be empty
-        self.assertTrue(self.active_banner, "Banner should not be active")
 
-        # Update Query
+        # Banner should not be active, so active_banner will be empty
         self.active_banner = Banner.objects.get_deployed().first()
+        self.assertFalse(self.active_banner, "Banner should not be active")
 
         # Set banner to disabled
         self.b1.disabled = True
         self.b1.save()
 
-        # Update Query
-        self.active_banner = Banner.objects.get_deployed().first()
-
         # Banner should not be active, so active_banner will be empty
+        self.active_banner = Banner.objects.get_deployed().first()
         self.assertFalse(self.active_banner, "Banner should not be active if set to disabled.")
