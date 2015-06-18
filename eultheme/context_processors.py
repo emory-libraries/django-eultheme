@@ -3,8 +3,7 @@ from django.conf import settings
 from django.contrib.sites.models import get_current_site
 from django.utils.functional import SimpleLazyObject
 from django.utils.timezone import utc
-from downtime.models import Period
-from .models import Banner
+from .models import Banner, DowntimePeriod
 
 def template_settings(request):
     '''Template context processor: add selected setting to context
@@ -36,5 +35,5 @@ def downtime_context(request):
         banner = banner[0]
         return {'banner': banner}
 
-    site_is_down = Period.objects.is_down()
+    site_is_down = DowntimePeriod.objects.is_down()
     return {'site_is_down': site_is_down}
