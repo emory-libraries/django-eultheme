@@ -37,6 +37,7 @@ class BannerTest(TestCase):
         self.active_banner = Banner.objects.get_deployed().first()
         self.assertFalse(self.active_banner, "Banner should not be active if its period is not enabled.")
 
+        # Banner should be active if its period is enabled.
         self.p1.enabled = True
         self.p1.save()
         self.active_banner = Banner.objects.get_deployed().first()

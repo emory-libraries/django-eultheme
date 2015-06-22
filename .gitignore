@@ -1,3 +1,4 @@
 *.pyc
 
 django_eultheme.egg-info/*
+db.sqlite3
