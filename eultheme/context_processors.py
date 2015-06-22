@@ -30,9 +30,8 @@ def site_path(request):
 
 def downtime_context(request):
     '''Template context processor: add relevant maintenance banner to site.'''
-    banner = Banner.objects.get_deployed()
+    banner = Banner.objects.get_deployed().first()
     if banner:
-        banner = banner[0]
         return {'banner': banner}
 
     site_is_down = DowntimePeriod.objects.is_down()

@@ -52,7 +52,6 @@ class Banner(models.Model):
     def do_observe_period_saved(cls, sender, instance, created, **kwargs):
         affected_banners = Banner.objects.filter(period = instance)
         for banner in affected_banners:
-            print banner
             banner.save()
         pass
 
