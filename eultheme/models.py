@@ -29,19 +29,35 @@ class Banner(models.Model):
     objects = BannerManager()
 
     def __unicode__(self):
+        """
+        Returns unicode for Django instance references.
+        """
         return "%s: %s" % (self.title, self.period)
 
     def save(self, *args, **kwargs):
-
+        """
+        Update the show_on_date of the banner object when saved.
+        `show_on_date` is calculated on the period.start_time and days;
+        it is used for querying the appropriate banner to display by datetime.
+        """
         self.show_on_date = self.period.start_time - datetime.timedelta(days=self.days)
         super(Banner, self).save(*args, **kwargs)
 
     @property
     def period_has_started(self):
+        """
+        Returns True if the start_time of the associated period occurs in the
+        past based on the current time.
+        """
         return self.period.start_time <= datetime.datetime.now()
 
     @property
     def downtime(self):
+        """
+        Returns the duration of the downtime scheduled in terms of days and hours
+        by subtracting the period's end_time from the start_time.
+        If no end_time is defined, returns indefinite.
+        """
         if self.period.end_time:
             downtime = self.period.end_time - self.period.start_time
             return {'days':downtime.days, 'hours':downtime.seconds//3600}
@@ -50,6 +66,10 @@ class Banner(models.Model):
 
     @classmethod
     def do_observe_period_saved(cls, sender, instance, created, **kwargs):
+        """
+        Saves banner objects that are affected by period updates.
+        (Referenced periods help define times for start, end, and display.)
+        """
         affected_banners = Banner.objects.filter(period = instance)
         for banner in affected_banners:
             banner.save()

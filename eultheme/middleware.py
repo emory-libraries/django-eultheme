@@ -15,9 +15,10 @@ class DownpageMiddleware(DowntimeMiddleware):
 
         downtime_request = super(DownpageMiddleware,self).process_request(request)
 
-        if downtime_request and \
-            settings.DOWNTIME_ALLOWED_IPS and \
-            get_client_ip(request) in settings.DOWNTIME_ALLOWED_IPS:
+        allowed_ips = getattr(settings, 'DOWNTIME_ALLOWED_IPS', [])
+
+        if downtime_request and allowed_ips and \
+            get_client_ip(request) in allowed_ips:
             return None
         else:
             return downtime_request
