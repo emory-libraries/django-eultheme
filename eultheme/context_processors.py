@@ -31,8 +31,11 @@ def site_path(request):
 def downtime_context(request):
     '''Template context processor: add relevant maintenance banner to site.'''
     banner = Banner.objects.get_deployed().first()
+    context = {}
     if banner:
-        return {'banner': banner}
+        context.update({'banner': banner})
 
     site_is_down = DowntimePeriod.objects.is_down()
-    return {'site_is_down': site_is_down}
+    if site_is_down:
+        context.update({'site_is_down': site_is_down})
+    return context
