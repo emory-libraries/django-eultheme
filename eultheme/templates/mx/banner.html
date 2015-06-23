@@ -138,7 +138,7 @@
   <div class="mx-footer">
     <p>
       <span id="mx-warning-icon">!</span>
-      <span>The site {% if not banner.period_has_started %}will be{% else %}was put{% endif %} down {{banner.period.start_time|naturaltime}}</span>
+      <span>The site {% if not site_is_down %}will be{% else %}was put{% endif %} down {{banner.period.start_time|naturaltime}}</span>
       {% if banner.downtime %}
         {% if banner.downtime.indefinite %}
         <span> for an indefinite amount of time.</span>

@@ -9,15 +9,14 @@ class DownpageMiddleware(DowntimeMiddleware):
         downtime_request = super(DownpageMiddleware,self).process_request(request)
 
         allowed_ips = getattr(settings, 'DOWNTIME_ALLOWED_IPS', [])
-
         if downtime_request and allowed_ips and \
-            self.client_ip in allowed_ips:
+            self.client_ip(request) in allowed_ips:
             return None
         else:
             return downtime_request
 
     @classmethod
-    def client_ip(request):
+    def client_ip(self, request):
         """
         Returns the client IP address from the request.
         """
