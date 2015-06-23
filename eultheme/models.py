@@ -51,15 +51,17 @@ class Banner(models.Model):
     @property
     def downtime(self):
         """
-        Returns the duration of the downtime scheduled in terms of days and hours
+        Returns the duration of the scheduled downtime in terms of days and hours
         by subtracting the period's end_time from the start_time.
         If no end_time is defined, returns indefinite.
         """
+        duration = {}
         if self.period.end_time:
             downtime = self.period.end_time - self.period.start_time
-            return {'days':downtime.days, 'hours':downtime.seconds//3600}
-        else:
-            return {'indefinite':True}
+            duration.update({'days':downtime.days, 'hours':downtime.seconds//3600})
+        else
+            duration.update({'indefinite': True})
+        return duration
 
     @classmethod
     def do_observe_period_saved(cls, sender, instance, created, **kwargs):
