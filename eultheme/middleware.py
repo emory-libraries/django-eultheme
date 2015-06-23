@@ -2,15 +2,15 @@ from django.conf import settings
 from django.shortcuts import render
 from downtime.middleware import DowntimeMiddleware
 
+
 class DownpageMiddleware(DowntimeMiddleware):
 
     def process_request(self, request):
 
-        downtime_request = super(DownpageMiddleware,self).process_request(request)
+        downtime_request=super(DownpageMiddleware, self).process_request(request)
 
         allowed_ips = getattr(settings, 'DOWNTIME_ALLOWED_IPS', [])
-        if downtime_request and allowed_ips and \
-            self.client_ip(request) in allowed_ips:
+        if downtime_request and allowed_ips and self.client_ip(request) in allowed_ips:
             return None
         else:
             return downtime_request

@@ -7,6 +7,7 @@ from .managers import BannerManager
 from downtime.models import Period
 from django.db.models import signals
 
+
 # MX Banners
 class Banner(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -57,9 +58,9 @@ class Banner(models.Model):
         """
         duration = {}
         if self.period.end_time:
-            downtime = self.period.end_time - self.period.start_time
-            duration.update({'days':downtime.days, 'hours':downtime.seconds//3600})
-        else
+            downtime= (self.period.end_time - self.period.start_time)
+            duration.update({'days': downtime.days, 'hours': downtime.seconds //3600})
+        else:
             duration.update({'indefinite': True})
         return duration
 
@@ -69,9 +70,9 @@ class Banner(models.Model):
         Saves banner objects that are affected by period updates.
         (Referenced periods help define times for start, end, and display.)
         """
-        affected_banners = Banner.objects.filter(period = instance)
+        affected_banners = Banner.objects.filter(period=instance)
         for banner in affected_banners:
             banner.save()
         pass
 
-signals.post_save.connect( Banner.do_observe_period_saved, sender=Period )
+signals.post_save.connect(Banner.do_observe_period_saved, sender=Period)

@@ -4,8 +4,9 @@ from django.db.models import Q
 from django.conf import settings
 from django.utils.timezone import utc
 
+
 class BannerQuerySet(models.query.QuerySet):
-    
+
     def active(self):
         """
         Returns banner objects that are not marked as disabled
@@ -34,8 +35,7 @@ class BannerQuerySet(models.query.QuerySet):
             now = datetime.datetime.utcnow().replace(tzinfo=utc)
         else:
             now = datetime.datetime.now()
-        query_show = Q(show_on_date__lte=now) & \
-                    (Q(period__end_time__gte=now) | Q(period__end_time=None))
+        query_show = Q(show_on_date__lte=now) & (Q(period__end_time__gte=now) | Q(period__end_time=None))
 
         banners = self.filter(query_show)
 

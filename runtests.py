@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
-import os, sys
-from django.conf import settings
+import os
+import sys
 import django
+from django.conf import settings
 
 DIRNAME = os.path.dirname(__file__)
 
@@ -13,8 +14,7 @@ if django.VERSION[1] < 4:
     settings.configure(DEBUG=True,
                        DATABASES={
                            'default': {
-                               'ENGINE': 'django.db.backends.sqlite3',
-                               }
+                               'ENGINE': 'django.db.backends.sqlite3', }
                        },
                        INSTALLED_APPS=('django.contrib.auth',
                                        'django.contrib.contenttypes',
@@ -26,8 +26,7 @@ else:
     settings.configure(DEBUG=True,
                        DATABASES={
                            'default': {
-                               'ENGINE': 'django.db.backends.sqlite3',
-                               }
+                               'ENGINE': 'django.db.backends.sqlite3', }
                        },
                        INSTALLED_APPS=('django.contrib.auth',
                                        'django.contrib.contenttypes',

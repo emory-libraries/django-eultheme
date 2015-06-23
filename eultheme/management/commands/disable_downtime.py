@@ -5,6 +5,7 @@ import datetime
 
 from downtime.models import Period
 
+
 class Command(BaseCommand):
     """
     `disable_downtime` command sets enabled to False for all active period objects.
