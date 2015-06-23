@@ -1,6 +1,7 @@
 import datetime
 
 from django.test import TestCase
+from django.core.management import call_command
 from downtime.models import Period
 from .models import Banner
 
@@ -77,3 +78,32 @@ class BannerTest(TestCase):
         # Banner should not be active, so active_banner will be empty
         self.active_banner = Banner.objects.get_deployed().first()
         self.assertFalse(self.active_banner, "Banner should not be active if set to disabled.")
+
+class CommandTest(TestCase):
+    def test_disable_downtime(self):
+        """
+        Test disable_downtime management command.
+        """
+        self.p1 = Period.objects.create(
+            id=123,
+            enabled=True,
+            start_time = datetime.datetime.now(),
+            end_time = datetime.datetime.now() + datetime.timedelta(days=2)
+        )
+
+        self.p2 = Period.objects.create(
+            id=124,
+            enabled=False,
+            start_time = datetime.datetime.now(),
+            end_time = datetime.datetime.now() + datetime.timedelta(days=2)
+        )
+
+        self.active_periods = Period.objects.active()
+
+        self.assertTrue(self.active_periods, "Period 1 should be active initally.")
+
+        # Call disable_downtime command
+        call_command('disable_downtime')
+
+        self.active_periods = Period.objects.active()
+        self.assertFalse(self.active_periods, "Periods should all be disabled.")
