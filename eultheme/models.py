@@ -4,15 +4,8 @@ from django.db import models
 from django.utils.timezone import utc
 from django.utils.translation import ugettext_lazy as _
 from .managers import BannerManager
-from downtime.models import Period, PeriodManager
+from downtime.models import Period
 from django.db.models import signals
-
-# Extended Downtime Period
-class DowntimePeriod(Period):
-    objects = PeriodManager()
-
-    def __unicode__(self):
-        return "Scheduled Downtime: %s to %s" % (self.start_time, self.end_time)
 
 # MX Banners
 class Banner(models.Model):
@@ -20,13 +13,17 @@ class Banner(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=25, help_text=_('The title that will display on the banner. \nMax length of 25 characters.'))
     message = models.CharField(max_length=140, help_text=_('The message to be shown in the banner. \nMax length of 140 characters.'))
-    period = models.ForeignKey(DowntimePeriod, help_text=_('The downtime associated with this banner. \nUsed to define when to show banner.'))
+    period = models.ForeignKey(Period, help_text=_('The downtime associated with this banner. \nUsed to define when to show banner.'))
     days = models.PositiveIntegerField(help_text=_('Number of days previous to the downtime period to show the banner.'))
     disabled = models.BooleanField(default=False)
 
     show_on_date = models.DateTimeField(blank=True, null=True, editable=False, help_text=_('The date which the banner will be eligable to be shown.'))
 
     objects = BannerManager()
+
+    class Meta:
+        verbose_name = "Downtime Banner"
+        verbose_name_plural = "Downtime Banners"
 
     def __unicode__(self):
         """
@@ -75,4 +72,4 @@ class Banner(models.Model):
             banner.save()
         pass
 
-signals.post_save.connect( Banner.do_observe_period_saved, sender=DowntimePeriod )
+signals.post_save.connect( Banner.do_observe_period_saved, sender=Period )

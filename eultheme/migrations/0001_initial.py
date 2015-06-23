@@ -24,16 +24,9 @@ class Migration(migrations.Migration):
                 ('show_on_date', models.DateTimeField(help_text='The date which the banner will be eligable to be shown.', null=True, editable=False, blank=True)),
             ],
         ),
-        migrations.CreateModel(
-            name='DowntimePeriod',
-            fields=[
-                ('period_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='downtime.Period')),
-            ],
-            bases=('downtime.period',),
-        ),
         migrations.AddField(
             model_name='banner',
             name='period',
-            field=models.ForeignKey(help_text='The downtime associated with this banner. \nUsed to define when to show banner.', to='eultheme.DowntimePeriod'),
+            field=models.ForeignKey(help_text='The downtime associated with this banner. \nUsed to define when to show banner.', to='downtime.Period'),
         ),
     ]

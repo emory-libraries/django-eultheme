@@ -6,19 +6,19 @@ from django.conf import settings
 from django.utils.timezone import utc
 import datetime
 
-from eultheme.models import DowntimePeriod
+from downtime.models import Period
 
 class Command(BaseCommand):
     help = 'End downtime after finished maintenance.'
 
     def handle(self, *args, **options):
-        objects = DowntimePeriod.objects.is_deployment()
+        objects = Period.objects.is_deployment()
 
-        # Check to see if there are any DowntimePeriod objects in 'deployement'
+        # Check to see if there are any Period objects in 'deployement'
         if not objects:
-            objects = DowntimePeriod.objects.is_down()
+            objects = Period.objects.is_down()
 
-        # Check to see if there are any DowntimePeriod objects are in the 'down' status
+        # Check to see if there are any Period objects are in the 'down' status
         if not objects:
             self.stdout.write('Warning: Couldn\'t find any applicable downtime objects. Check to see if the site accessible?')
             return False
