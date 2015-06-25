@@ -4,6 +4,7 @@ Helper classes for forms and widgets.
 
 from django import forms
 
+
 class TelephoneInput(forms.TextInput):
     'HTML5 telephone input (prompt for numeric entry)'
     input_type = 'tel'
@@ -14,10 +15,14 @@ class FilterSearchForm(forms.Form):
     eultheme/snippets/search_filters.html template.  Can be used as an
     example or extended.
     '''
-    start_date = forms.IntegerField(required=False,
+    start_date = forms.IntegerField(
+        required=False,
         help_text=''''Search by start year;  use with end date to specify a range or single year''',
-        widget=TelephoneInput(attrs={'class': 'form-control', 'placeholder': 'Start year'}))
-    end_date = forms.IntegerField(required=False,
+        widget=TelephoneInput(
+            attrs={'class': 'form-control', 'placeholder': 'Start year'}))
+
+    end_date = forms.IntegerField(
+        required=False,
         help_text='Search by end date; use with start date to specify a range or single year',
         widget=TelephoneInput(attrs={'class': 'form-control', 'placeholder': 'End year'}))
 
@@ -41,13 +46,14 @@ class DateFilterSearchForm(FilterSearchForm):
     used as an example or extended.
 
     '''
-    start_date = forms.IntegerField(required=False,
+    start_date = forms.IntegerField(
+        required=False,
         help_text=''''Search by start year;  use with end date to specify a range or single year''',
         widget=TelephoneInput(attrs={'class': 'form-control', 'placeholder': 'Start year'}))
-    end_date = forms.IntegerField(required=False,
+    end_date = forms.IntegerField(
+        required=False,
         help_text='Search by end date; use with start date to specify a range or single year',
         widget=TelephoneInput(attrs={'class': 'form-control', 'placeholder': 'End year'}))
-
 
     @property
     def advanced_fields_values(self):

@@ -8,6 +8,8 @@ by default; use page_rdf_type to override with a webpage subclass.
   <head>
     <title>{% block page-title %}{% block page-subtitle %}{% endblock %}{% endblock %}</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     {% block metadata %}{% endblock %}
 
     {% block favicon %}
@@ -42,13 +44,22 @@ by default; use page_rdf_type to override with a webpage subclass.
     {% block head_extras %}{% endblock %}  {# any header metadata, etc #}
   </head>
   <body class="{% block body_class %}{% endblock %}"{% block body_attrs %}{% endblock %}>
+
+    {% block beta_banner %}
       {% if ENABLE_BETA_WARNING %}
-        <div class="ribbon beta-warning fade">
-          <h2>This site is in <code>BETA</code></h2>
-          <p>Content may change or be removed without warning.</p>
-          <button class="btn btn-default">OK</button>
-        </div>
+      <div class="ribbon beta-warning fade">
+        <h2>This site is in <code>BETA</code></h2>
+        <p>Content may change or be removed without warning.</p>
+        <button class="btn btn-default">OK</button>
+      </div>
       {% endif %}
+    {% endblock %}
+
+    {% block mx_banner %}
+      {% if banner %}
+      {% include 'mx/banner.html' %}
+      {% endif %}
+    {% endblock %}
 
     <div class="navbar {% block nav_class %}{% endblock %}" role="navigation">
       <div class="navbar-header logo-container">
