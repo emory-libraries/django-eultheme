@@ -3,6 +3,7 @@ from django.template.defaultfilters import stringfilter
 
 register = template.Library()
 
+
 @register.filter
 @stringfilter
 def messagetag_css(value):
@@ -12,4 +13,4 @@ def messagetag_css(value):
     elif value == 'error':
         return 'bg-danger'
     elif value == 'debug':
-        return 'bg-primary' #?
+        return 'bg-primary'  # ?
