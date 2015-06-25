@@ -1,6 +1,18 @@
 CHANGELOG
 =========
 
+Release 1.0
+-----------
+
+- Added dependency **django-downtime**
+- Added maintenance banners to display downtime warnings
+- New context processor, **downtime_context**, to add relevant
+  maintenance information to site
+- New management command, `disable_downtime`, to disable all downtime periods
+- Added base downtime template `eultheme/downtime_base.html` that extends `eultheme/site_base.html`
+- New block for maintenance banner, **mx_banner**
+- New html template for downtime pages based on Bootstrap
+- New snippet for maintenance banners
 
 Release 0.5
 -----------
