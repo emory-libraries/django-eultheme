@@ -3,6 +3,8 @@ django-eultheme
 
 Reusable Emory University Libraries theme/templates for use with Django applications
 
+.. image:: https://travis-ci.org/emory-libraries/django-eultheme.svg?branch=feature%2Fmaintenance_notifications
+    :target: https://travis-ci.org/emory-libraries/django-eultheme
 
 Use and Installation:
 ---------------------
