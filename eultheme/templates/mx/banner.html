@@ -138,21 +138,16 @@
   <div class="mx-footer">
     <p>
       <span id="mx-warning-icon">!</span>
-      <span>The site {% if not site_is_down %}will be{% else %}was put{% endif %} down {{banner.period.start_time|naturalday}}</span>
+      <span>The site {% if not site_is_down %}will be{% else %}was put{% endif %} down {{banner.period.start_time|naturalday}} at {{banner.period.start_time|date:"P"}} </span>
 
       {% if banner.downtime %}
         {% if banner.downtime.indefinite %}
         <span> for an indefinite amount of time.</span>
         {% else %}
           {% if banner.downtime.days %}
-            <span>for {{banner.downtime.days}} day{{ banner.downtime.days|pluralize }}</span>
-
-            {% if banner.hours %}
-            <span>, {{banner.downtime.hours}} hours{{ banner.downtime.hours|pluralize }}</span>
-            {% endif %}
+            <span>until {{banner.period.end_time|date:"P l, M d"}}.</span>
 
           {% else %}
-
             <span>from {{banner.period.start_time|date:"P"}} to {{ banner.period.end_time|date:"P" }}</span>
 
           {% endif %} {% comment "banner.downtime.days" %}{% endcomment %}
