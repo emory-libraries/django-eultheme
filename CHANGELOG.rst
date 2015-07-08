@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+Release 1.1
+-----------
+
+- Banners show time range (i.e. noon to 6pm) for downtimes less than 24 hours.
+
 Release 1.0
 -----------
 
