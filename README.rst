@@ -27,8 +27,13 @@ Use and Installation:
     eultheme.context_processors.template_settings
 
 * *Recommended:* create a context processor to include your project version
-  in all templates as **SW_VERSION**.  By default, eultheme will display
-  the project version in the footer.
+  in all templates as **SW_VERSION**.  If it is set, eultheme will display
+  the current version in the footer.  Example version context processor::
+
+      from myproject import __version__
+
+      def version(request):
+          return {'SW_VERSION': __version__}
 
 * Include **eultheme.js** in your site base (or other templates as appropriate)
   if you use any of the template snippets that require it
