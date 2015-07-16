@@ -9,42 +9,82 @@ Reusable Emory University Libraries theme/templates for use with Django applicat
 Use and Installation:
 ---------------------
 
-* pip install via github url
-* Add ``eultheme``, ``widget_tweaks``, and ``downtime`` to **INSTALLED_APPS**
-* Add ``eultheme.middleware.DownpageMiddleware`` to **MIDDLEWARE_CLASSES** after ``django.contrib.sessions.middleware.SessionMiddleware`` and ``django.contrib.auth.middleware.AuthenticationMiddleware``
+* pip install via github url::
+
+  pip install -e git://github.com/emory-libraries/django-eultheme.git#egg=eultheme
+
+* Update **INSTALLED_APPS** to include the following::
+
+    'django.contrib.humanize',
+    'eultheme',
+    'widget_tweaks',
+    'downtime'
+
+
 * Extend ``eultheme/site_base.html`` for your base template.
-* Recommended: add ``eultheme.context_processors.template_settings`` to
-  your **TEMPLATE_CONTEXT_PROCESSORS**
+* *Recommended:* update **TEMPLATE_CONTEXT_PROCESSORS** to include::
 
-Expects that you are using :mod:`django.contrib.staticfiles`, and that
+    eultheme.context_processors.template_settings
+
+**eultheme** expects that you are using ``django.contrib.staticfiles``, and that
 **TEMPLATE_LOADERS** and **STATICFILES_FINDERS** are configured to load
-files from app directories (included in the default settings).
+files from app directories (included in the default settings).  It also
+expects a named url called ``site-index``.
 
-Recommended: add downtime exempt paths to your local settings.
-This will allow access to parts of the site even if the site marked as down.
-::
+*Recommended:* create a context processor to include your project version
+in all templates as **SW_VERSION**.  By default, eultheme will display
+the project version in the footer.
 
-  # exempted paths for downtime
-  DOWNTIME_EXEMPT_PATHS = (
-      '/admin',
-  )
+Include **eultheme.js** in your site base if you use any of the template
+snippets that require it (e.g., advanced search filters).
 
-Recommended: add downtime exempt IP addresses to your local settings.
-This will allow access to the entire site even if the site is marked as be down
-when accessing it with one of the listed IPs.
-::
+Downtime/Maintenance pages
+--------------------------
 
-  # list of IPs that can access the site despite downtime
-  DOWNTIME_ALLOWED_IPS = ['127.0.0.1']
+eultheme includes maintenance functionality based on `django-downtime`_.
+
+.. _django-downtime: https://github.com/dstegelman/django-downtime
+
+To enable downtime functionality and maintenance banners before
+scheduled downtimes, add the following configurations.
+
+* Update **MIDDLEWARE_CLASSES** to include::
+
+    eultheme.middleware.DownpageMiddleware
+
+  This should be included after
+  ``django.contrib.auth.middleware.AuthenticationMiddleware`` and
+  ``django.contrib.sessions.middleware.SessionMiddleware``.
+
+* Update **TEMPLATE_CONTEXT_PROCESSORS** to include::
+
+    eultheme.context_processors.downtime_context
+
+* Add downtime exempt paths to your local settings for URLs that
+  are not affected by the downtime. This will allow access to parts of
+  the site even if when the site is down for scheduled maintenance::
+
+      # exempted paths for downtime
+      DOWNTIME_EXEMPT_PATHS = (
+          '/admin',
+      )
+
+* Add downtime exempt IP addresses to your local settings.  This will
+  allow access to the entire site even when the site is scheduled to
+  be down hen accessing it with one of the listed IPs.::
+
+     # list of IPs that can access the site despite downtime
+     DOWNTIME_ALLOWED_IPS = ['127.0.0.1']
+
+You can customize downtime pages by adding a ``downtime/downtime.html``
+template that extends ``eultheme/downtime_base.html``.
+
+If you are not extending ``eultheme/site_base.html`` for your base
+template, you can include maintenance banners by including the
+``mx/banner.html`` snippet.
 
 
-Recommended: setup a context processor to include your project version
-in all templates as **SW_VERSION**.
-
-Customize downtime pages by adding a `downtime/downtime.html` template that extends `eultheme/downtime_base.html`
-
-Include **eultheme.js** in your site base if you use any of the template snippets
-that require it (e.g., advanced search filters).
+----
 
 **NOTE**: We use git flow naming conventions for this git repository.
 New development will always be in in *develop* and the most recent
