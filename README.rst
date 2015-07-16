@@ -11,7 +11,7 @@ Use and Installation:
 
 * pip install via github url::
 
-  pip install -e git://github.com/emory-libraries/django-eultheme.git#egg=eultheme
+     pip install -e git://github.com/emory-libraries/django-eultheme.git#egg=eultheme
 
 * Update **INSTALLED_APPS** to include the following::
 
@@ -26,17 +26,20 @@ Use and Installation:
 
     eultheme.context_processors.template_settings
 
+* *Recommended:* create a context processor to include your project version
+  in all templates as **SW_VERSION**.  By default, eultheme will display
+  the project version in the footer.
+
+* Include **eultheme.js** in your site base (or other templates as appropriate)
+  if you use any of the template snippets that require it
+  (e.g., advanced search filters).
+
+
 **eultheme** expects that you are using ``django.contrib.staticfiles``, and that
 **TEMPLATE_LOADERS** and **STATICFILES_FINDERS** are configured to load
 files from app directories (included in the default settings).  It also
 expects a named url called ``site-index``.
 
-*Recommended:* create a context processor to include your project version
-in all templates as **SW_VERSION**.  By default, eultheme will display
-the project version in the footer.
-
-Include **eultheme.js** in your site base if you use any of the template
-snippets that require it (e.g., advanced search filters).
 
 Downtime/Maintenance pages
 --------------------------
