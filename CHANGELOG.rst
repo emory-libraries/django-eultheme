@@ -23,7 +23,7 @@ Release 1.0
 Release 0.5
 -----------
 
-- Added block for metadata
+- Added new template block for header metadata, e.g. Twitter or OpenGraph integration
 - New icons from Font Awesome (http://fortawesome.github.io/Font-Awesome/icons/)
 - New dropdown pagination template
 - New context processor, **site_path**, for access to the current configured
