@@ -12,6 +12,7 @@ Use and Installation:
 * pip install via github url
 * Add ``eultheme``, ``widget_tweaks``, and ``downtime`` to **INSTALLED_APPS**
 * Add ``eultheme.middleware.DownpageMiddleware`` to **MIDDLEWARE_CLASSES** after ``django.contrib.sessions.middleware.SessionMiddleware`` and ``django.contrib.auth.middleware.AuthenticationMiddleware``
+* Ensure Django Downtime context processor is included in **TEMPLATE_CONTEXT_PROCESSORS**, ``"eultheme.context_processors.downtime_context",``
 * Extend ``eultheme/site_base.html`` for your base template.
 * Recommended: add ``eultheme.context_processors.template_settings`` to
   your **TEMPLATE_CONTEXT_PROCESSORS**
