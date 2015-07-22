@@ -1,11 +1,17 @@
 CHANGELOG
 =========
 
+Release 1.1.1
+-------------
+
+- Wording improvements for downtime banner and page, for clarity and
+  to handle all variant cases.
+
 Release 1.1
 -----------
 
 - Banners show time range (i.e. noon to 6pm) for downtimes less than 24 hours.
-- Simplified downtime message to show end_time.
+- Simplified downtime message to show end time.
 
 Release 1.0
 -----------

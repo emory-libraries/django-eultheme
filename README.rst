@@ -9,6 +9,7 @@ Reusable Emory University Libraries theme/templates for use with Django applicat
 Use and Installation:
 ---------------------
 
+
 * pip install via github url::
 
      pip install -e git://github.com/emory-libraries/django-eultheme.git#egg=eultheme
