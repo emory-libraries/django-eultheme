@@ -251,7 +251,7 @@
         <p class="lead">
           {% if banner.period.end_time %}
           <span>We should be back up and running {{banner.period.end_time}}</span>
-          {% elif site_is_down %}
+          {% elif site_is_down and site_is_down.0.end_time %}
           <span>We are scheduled to be back up and running {{site_is_down.0.end_time}}</span>
           {% else %}
           <span> We are going to be down for a while. Please check back later.</span>

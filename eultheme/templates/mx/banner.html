@@ -138,23 +138,22 @@
   <div class="mx-footer">
     <p>
       <span id="mx-warning-icon">!</span>
-      <span>The site {% if not site_is_down %}will be{% else %}was put{% endif %} down {{banner.period.start_time|naturalday}} at {{banner.period.start_time|date:"P"}} </span>
+      <span>This site
+        {% if site_is_down and banner.downtime.indefinite %}is currently unavailable. {# end time unknown #}
+        {% else %} will be unavailable {% endif %}
+        {% if not site_is_down %}
+        starting {{banner.period.start_time|naturalday}} at {{banner.period.start_time|date:"P"}}
+        {% endif %}
+        {# when already down, don't display start time #}
+      </span>
 
-      {% if banner.downtime %}
-        {% if banner.downtime.indefinite %}
-        <span> for an indefinite amount of time.</span>
+      {% if not banner.downtime.indefinite %} {# don't display indefinite end #}
+        {% if banner.downtime.days %}
+          <span>until {{banner.period.end_time|date:"P l, M d"}}.</span>
         {% else %}
-          {% if banner.downtime.days %}
-            <span>until {{banner.period.end_time|date:"P l, M d"}}.</span>
-
-          {% else %}
-            <span>from {{banner.period.start_time|date:"P"}} to {{ banner.period.end_time|date:"P" }}</span>
-
-          {% endif %} {% comment "banner.downtime.days" %}{% endcomment %}
-
-        {% endif %} {% comment "End banner.downtime.indefinite" %}{% endcomment %}
-
-      {% endif %} {% comment "End banner.downtime" %}{% endcomment %}
+          <span>until {{ banner.period.end_time|date:"P" }}</span>
+        {% endif %} {# banner.downtime.days #}
+      {% endif %} {# non-indefinite duration #}
     </p>
   </div>
 </div>
