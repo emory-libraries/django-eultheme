@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+Release 1.1.2
+-----------
+
+- Added south migrations for older versions of Django (<1.7)
+
 Release 1.1.1
 -------------
 
