@@ -93,6 +93,13 @@ template, you can include maintenance banners by including the
 ``mx/banner.html`` snippet.
 
 
+South Migrations
+----------------
+
+For older instances of Django (<1.7), the south_migrations directory contains
+schema that will be discovered by `syncdb`
+
+
 ----
 
 **NOTE**: We use git flow naming conventions for this git repository.
