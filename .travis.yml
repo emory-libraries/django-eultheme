@@ -22,7 +22,7 @@ install:
   - pip install -q -e . --use-mirrors
   - pip install -r pip-test-req.txt
 before_script:
-  - "pep8 --exclude=migrations --ignore=E501,E225 ."
+  - "pep8 --exclude=*migrations* --ignore=E501,E225 ."
   - pyflakes -x W .
 script:
   - python runtests.py
