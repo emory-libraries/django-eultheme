@@ -1,8 +1,20 @@
 CHANGELOG
 =========
 
-Release 1.1.2
+Release 1.2
 -----------
+
+- Update pagination snippets **pagination_all_pages** and **pagination_dropdown**
+  to use standard pagination context objects provided by Django's class-based views.
+
+.. Warning::
+
+    Pagination template context variable changes are *not* backwards
+    compatible.
+
+
+Release 1.1.2
+-------------
 
 - Added south migrations for older versions of Django (<1.7)
 
