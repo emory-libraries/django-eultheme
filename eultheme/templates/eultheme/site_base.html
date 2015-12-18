@@ -16,7 +16,12 @@ by default; use page_rdf_type to override with a webpage subclass.
     <link id="siteFavIcon" rel="shortcut icon" type="image/x-icon" href="{% static 'eultheme/img/favicon.ico' %}">
     {% endblock %}
     <!-- Bootstrap -->
+    {% if EULTHEME_NO_EXTERNAL_JS %}  {# use local css/js when requested #}
     <link href="{% static 'eultheme/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    {% else %}
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    {% endif %}
     <link href="{% static 'eultheme/css/font-awesome.min.css' %}" rel="stylesheet"/>
     <link href="{% static 'eultheme/css/selectize.css' %}" rel="stylesheet"/>
     <link href="{% static 'eultheme/css/eultheme.css' %}" rel="stylesheet"/>
@@ -32,8 +37,11 @@ by default; use page_rdf_type to override with a webpage subclass.
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     {% if EULTHEME_NO_EXTERNAL_JS %}  {# use local copy when requested #}
     <script src="{% static 'eultheme/js/jquery.min.js' %}"></script>
+    <script src="{% static 'eultheme/js/bootstrap.min.js' %}"></script>
     {% else %}
     <script src="https://code.jquery.com/jquery.min.js"></script>
+    <!-- Latest compiled and minified Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     {% endif %}
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static 'eultheme/js/bootstrap.min.js' %}"></script>
