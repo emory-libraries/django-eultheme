@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+Release 1.2.1
+-------------
+
+- Update to Bootstrap v3.3.6.
+
 Release 1.2
 -----------
 
