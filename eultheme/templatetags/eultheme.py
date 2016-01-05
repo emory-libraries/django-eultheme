@@ -8,9 +8,12 @@ register = template.Library()
 @stringfilter
 def messagetag_css(value):
     '''convert django message tags to equivalent Bootstrap CSS class'''
-    if value in ['success', 'info', 'warning']:
-        return 'bg-%s' % value
-    elif value == 'error':
+    # value could be multiple, space-separated tags
+    tags = value.split(' ')
+    for level in ['success', 'info', 'warning']:
+        if level in tags:
+            return 'bg-%s' % level
+    if 'error' in tags:
         return 'bg-danger'
-    elif value == 'debug':
+    elif 'debug' in tags:
         return 'bg-primary'  # ?
