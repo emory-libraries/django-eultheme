@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+Release 1.3
+-----------
+
+- Update **django.contrib.messages** for newer versions of Django
+  and to handle messages with multiple tags.
+
 Release 1.2.1
 -------------
 
