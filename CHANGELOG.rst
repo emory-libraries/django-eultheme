@@ -6,6 +6,9 @@ Release 1.3
 
 - Update **django.contrib.messages** for newer versions of Django
   and to handle messages with multiple tags.
+- Admin link in site base navigation now includes a FontAwesome icon
+  and span to customize display, e.g. for smaller screens
+- Body placement now uses margin instead of padding for fixed header layout
 
 Release 1.2.1
 -------------
