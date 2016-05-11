@@ -8,14 +8,14 @@ $(document).ready(function(){
         var $body = $('body');
 
         $(document).on('ready',function(){
-            addPadding($fixedNavbar.height());
+            addMargin($fixedNavbar.height());
         });
         $(window).resize(function(){
-            addPadding($fixedNavbar.height());
+            addMargin($fixedNavbar.height());
         })
 
-        function addPadding(navbar_height){
-            $body.css({'padding-top':navbar_height})
+        function addMargin(navbar_height){
+            $body.css({'margin-top': navbar_height})
         }
     }
 
