@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+Release 1.4.1
+-------------
+Changed the import for `get_current_site` for Django 1.9 compatibility. See http://djbook.ru/rel1.9/releases/1.7.html#moved-objects-in-contrib-sites
+
 Release 1.3
 -----------
 
