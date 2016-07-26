@@ -8,6 +8,12 @@ Changed the import for `get_current_site` for Django 1.9 compatibility. See http
 Release 1.3
 -----------
 
+- Update context processors for django 1.9+ compatibility
+
+
+Release 1.3
+-----------
+
 - Update **django.contrib.messages** for newer versions of Django
   and to handle messages with multiple tags.
 - Admin link in site base navigation now includes a FontAwesome icon
