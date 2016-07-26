@@ -1,4 +1,5 @@
 import datetime
+from StringIO import StringIO
 
 from django.test import TestCase
 from django.core.management import call_command
@@ -14,7 +15,7 @@ class BannerTest(TestCase):
         self.p1 = Period.objects.create(
             id=123,
             enabled=True,
-            start_time=datetime.datetime.now(),
+            start_time=datetime.datetime.now() - datetime.timedelta(hours=1),
             end_time=datetime.datetime.now() + datetime.timedelta(days=2)
         )
         self.b1 = Banner.objects.create(
@@ -24,60 +25,62 @@ class BannerTest(TestCase):
             days=0
         )
 
-        self.active_banner = Banner.objects.get_deployed().first()
+        active_banner = Banner.objects.get_deployed().first()
 
         # The first active banner should be b1
-        self.assertEqual(self.active_banner, self.b1)
+        self.assertEqual(active_banner, self.b1)
 
-        self.assertEqual(self.active_banner.period, self.p1)
+        self.assertEqual(active_banner.period, self.p1)
 
         # Banner should be active initally
-        self.assertTrue(self.active_banner, "Banner should be active")
+        self.assert_(active_banner, "Banner should be active")
 
         # Banner should be disabled if its period is disabled
-        self.p1.enabled=False
+        self.p1.enabled = False
         self.p1.save()
-        self.active_banner = Banner.objects.get_deployed().first()
-        self.assertFalse(self.active_banner, "Banner should not be active if its period is not enabled.")
+        active_banner = Banner.objects.get_deployed().first()
+        self.assertFalse(active_banner, "Banner should not be active if its period is not enabled.")
 
         # Banner should be active if its period is enabled.
-        self.p1.enabled=True
+        self.p1.enabled = True
         self.p1.save()
-        self.active_banner = Banner.objects.get_deployed().first()
-        self.assertTrue(self.active_banner, "Banner should be active if its period is enabled.")
+        active_banner = Banner.objects.get_deployed().first()
+        self.assert_(active_banner, "Banner should be active if its period is enabled.")
 
         # Change Period start_time to tomorrow
         self.p1.start_time = datetime.datetime.now() + datetime.timedelta(days=1)
         self.p1.save()
 
         # Banner should not be active, so active_banner will be empty
-        self.active_banner = Banner.objects.get_deployed().first()
-        self.assertFalse(self.active_banner, "Banner should not be active")
+        active_banner = Banner.objects.get_deployed().first()
+        self.assertFalse(active_banner, "Banner should not be active")
 
-        # Change Banner day range to 1 day out
-        self.b1.days=1
+        # Change Banner day range to 1 day out and period start to tomorrow
+        self.b1.days = 2
         self.b1.save()
+        self.p1.start_time = datetime.datetime.now() + datetime.timedelta(days=1)
+        self.p1.save()
 
         # Banner should be active
-        self.active_banner=Banner.objects.get_deployed().first()
-        self.assertTrue(self.active_banner, "Banner should be active")
+        active_banner = Banner.objects.get_deployed().first()
+        self.assert_(active_banner, "Banner should be active")
 
         # Change Period start_time and end_time to some time in the past
-        self.p1.start_time=datetime.datetime.now() - datetime.timedelta(days=9)
-        self.p1.end_time=datetime.datetime.now() - datetime.timedelta(days=8)
+        self.p1.start_time = datetime.datetime.now() - datetime.timedelta(days=9)
+        self.p1.end_time = datetime.datetime.now() - datetime.timedelta(days=8)
         self.p1.save()
 
         # Banner should not be active, so active_banner will be empty
-        self.active_banner = Banner.objects.get_deployed().first()
-        self.assertFalse(self.active_banner, "Banner should not be active")
+        active_banner = Banner.objects.get_deployed().first()
+        self.assertFalse(active_banner, "Banner should not be active")
 
         # Set banner to disabled
         self.b1.disabled = True
         self.b1.save()
 
         # Banner should not be active, so active_banner will be empty
-        self.active_banner = Banner.objects.get_deployed().first()
-        self.assertFalse(self.active_banner, "Banner should not be active if set to disabled.")
+        active_banner = Banner.objects.get_deployed().first()
+        self.assertFalse(active_banner, "Banner should not be active if set to disabled.")
 
 
 class CommandTest(TestCase):
@@ -103,8 +106,11 @@ class CommandTest(TestCase):
 
         self.assertTrue(self.active_periods, "Period 1 should be active initally.")
 
+        output = StringIO()
         # Call disable_downtime command
-        call_command('disable_downtime')
+        call_command('disable_downtime', stdout=output)
+        self.assertEqual('Success! All downtime periods have been disabled.\n',
+                         output.getvalue())
 
         self.active_periods = Period.objects.active()
         self.assertFalse(self.active_periods, "Periods should all be disabled.")
