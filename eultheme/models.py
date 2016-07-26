@@ -58,7 +58,7 @@ class Banner(models.Model):
         """
         duration = {}
         if self.period.end_time:
-            downtime= (self.period.end_time - self.period.start_time)
+            downtime = (self.period.end_time - self.period.start_time)
             duration.update({'days': downtime.days, 'hours': downtime.seconds //3600})
         else:
             duration.update({'indefinite': True})
@@ -73,6 +73,5 @@ class Banner(models.Model):
         affected_banners = Banner.objects.filter(period=instance)
         for banner in affected_banners:
             banner.save()
-        pass
 
 signals.post_save.connect(Banner.do_observe_period_saved, sender=Period)
