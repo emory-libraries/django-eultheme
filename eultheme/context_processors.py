@@ -1,6 +1,12 @@
 import datetime
 from django.conf import settings
-from django.contrib.sites.shortcuts import get_current_site
+try:
+    # new location as of django 1.7
+    from django.contrib.sites.shortcuts import get_current_site
+except ImportError:
+    # old import location available until django 1.9
+    from django.contrib.sites.models import get_current_site
+
 from django.utils.functional import SimpleLazyObject
 from django.utils.timezone import utc
 from downtime.models import Period
