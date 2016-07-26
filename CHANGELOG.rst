@@ -9,7 +9,7 @@ Release 1.3
 -----------
 
 - Update context processors for django 1.9+ compatibility
-
+- Drop python 2.6 and django 1.5 from travis-ci test matrix
 
 Release 1.3
 -----------
